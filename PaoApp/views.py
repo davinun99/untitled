@@ -10,11 +10,10 @@ def index( request ):
 
 def testLogin(request):
     context = {
-        'username': request.POST['username'],
-        'password': request.POST['password']
+        #'username': request.POST['username'],
+        #'password': request.POST['password']
     }
     return render( request, 'PaoApp/testLogin.html', context )
-
 
 class login_view( TemplateView ):
     template_name = 'PaoApp/login.html'
