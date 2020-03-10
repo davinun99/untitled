@@ -8,14 +8,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Login page</title>
+    <title>Landing page</title>
   </head>
-  <body>
+  <body class="m-3">
     <div class="container">
-        {%  if user.diplayName %}
-            <h1> {{  user.displayName }}</h1>
-        {% endif %}
+        <div class="row">
+            <h1 class="col-12 text-center">Bienvenido
+            {%  if userFirebaseData.diplayName %}
+                {{  userFirebaseData.displayName }}
+            {% elif userFirebaseData.email %}
+                {{  userFirebaseData.email }}
+            {% endif %}
+            !</h1>
 
+            Easy SSO
+        </div>
     </div>
 
 

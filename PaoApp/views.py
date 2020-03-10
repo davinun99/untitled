@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 import pyrebase
+from django.contrib import auth
 from django.views.generic.base import TemplateView
 config = {
     'apiKey': "AIzaSyAbCiMgh8az4COYBvq038jbrvVGA16oCeo",
@@ -14,7 +15,7 @@ config = {
 }
 firebase = pyrebase.initialize_app(config)
 
-auth = firebase.auth()
+authfb = firebase.auth()
 
 # Create your views here.
 
@@ -26,15 +27,36 @@ def index(request):
 def login( request ):
     return render( request, 'PaoApp/login.html', { })
 
+
+def IZItestLogin( request ):
+    email = request.POST['email']
+    password = request.POST['password']
+    user = authfb.sign_in_with_email_and_password(email, password)
+    session_id = user.idToken
+
+    message = 'Credenciales invalidas'
+    context = {
+        'userFirebaseData': user
+    }
+    return render(request, 'PaoApp/testLogin.html', context)
+
 def testLogin( request ):
     email = request.POST['email']
     password = request.POST['password']
     try:
-        user = auth.sign_in_with_email_and_password(email, password)
+        user = authfb.sign_in_with_email_and_password(email, password)
+
     except:
         message = 'Credenciales invalidas'
         return render( request, 'PaoApp/login.html',{ 'error_message' : message } )
+    print(user)
     context = {
-        'userFirebaseData' : user
+        'userFirebaseData': user
     }
+    session_id = user['idToken']
+    request.session['uid'] = str( session_id )
     return render( request, 'PaoApp/testLogin.html', context)
+
+def logout( request ):
+    auth.logout( request )
+    return render( request, 'PaoApp/login.html',{})
