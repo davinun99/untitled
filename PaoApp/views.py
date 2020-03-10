@@ -13,4 +13,8 @@ def index(request):
 def login( request ):
     return render( request, 'PaoApp/login.html', { })
 def testLogin( request ):
-    return render( request, 'PaoApp/testLogin.html', { })
+    context = {
+        'username' : request.POST['username'],
+        'password' : request.POST['password']
+    }
+    return render( request, 'PaoApp/testLogin.html', context)
