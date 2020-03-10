@@ -27,8 +27,14 @@ def login( request ):
     return render( request, 'PaoApp/login.html', { })
 
 def testLogin( request ):
-    email = request.POST['email'],
-    password =  request.POST['password']
-    user = auth.sign_in_with_email_and_password(email, password)
-    print( user )
-    return render( request, 'PaoApp/testLogin.html', {})
+    email = request.POST['email']
+    password = request.POST['password']
+    try:
+        user = auth.sign_in_with_email_and_password(email, password)
+    except:
+        message = 'Credenciales invalidas'
+        return render( request, 'PaoApp/login.html',{ 'error_message' : message } )
+    context = {
+        'userFirebaseData' : user
+    }
+    return render( request, 'PaoApp/testLogin.html', context)

@@ -11,10 +11,11 @@
     <title>Login page</title>
   </head>
   <body>
-  {% csrf_token %}
     <div class="container">
-        <h1> {{  email }}</h1>
-        <h1> {{ password }}</h1>
+        {%  if user.diplayName %}
+            <h1> {{  user.displayName }}</h1>
+        {% endif %}
+
     </div>
 
 
