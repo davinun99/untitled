@@ -11,8 +11,9 @@
     <title>Login page</title>
   </head>
   <body>
+  {% csrf_token %}
     <div class="container">
-        <h1> {{  username }}</h1>
+        <h1> {{  email }}</h1>
         <h1> {{ password }}</h1>
     </div>
 
