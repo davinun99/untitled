@@ -15,16 +15,12 @@
         <h1 class="text-white text-center">Poliproyecto</h1>
     </div>
     <div class="container">
-        <div class="row">
-            <h1 class="col-12 mb-3">Bienvenido
-            {%  if userFirebaseData.diplayName %}
-                {{  userFirebaseData.displayName }}
-            {% elif userFirebaseData.email %}
-                {{  userFirebaseData.email }}
-            {% endif %}
-            !</h1>
+        <div>
 
-            Easy SSO
+            <h3>Usuario creado con exito!</h3>
+
+            <h3><a href="{% url 'PaoApp:login' %}">Acceder</a></h3>
+            <h3><a href="{% url 'PaoApp:register' %}">Registrar nuevo usuario</a></h3>
         </div>
     </div>
 

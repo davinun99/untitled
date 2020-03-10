@@ -21,12 +21,23 @@ authfb = firebase.auth()
 
 
 def index(request):
-    return HttpResponse("Hola")
+    if request.session.get('uid', False):
+        return render(request, 'PaoApp/login.html', {})
+    else:
+        return render(request, 'PaoApp/testLogin.html', {})
+
 
 
 def login( request ):
     return render( request, 'PaoApp/login.html', { })
-
+def register( request ):
+    return render( request, 'PaoApp/register.html', { })
+def postRegister(request):
+    email = request.POST['email']
+    password = request.POST['password']
+    username = request.POST['username']
+    user = authfb.create_user_with_email_and_password( email, password )
+    return render( request, 'PaoApp/postReg.html', {})
 
 def IZItestLogin( request ):
     email = request.POST['email']

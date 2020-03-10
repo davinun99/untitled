@@ -8,21 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Login page</title>
+    <title>Register page</title>
   </head>
   <body>
     <div class="container">
         <h1 class="col-12 text-center">Poliproyectos App</h1>
             <div class="row justify-content-center mt-3">
-                <form class="col-sm-12 col-md-8 col-lg-6 pt-3" method="post" action="{% url 'PaoApp:testLogin' %}">
+                <form class="col-sm-12 col-md-8 col-lg-6 pt-3" method="post" action="{% url 'PaoApp:postRegister' %}">
                     {% csrf_token %}
-                    {%  if error_message %}
-                        <div class="form-group">
-                            <div class=" alert alert-danger">
-                                {{ error_message }}
-                            </div>
-                        </div>
-                    {%  endif %}
+                    <div class="form-group">
+                        <label for="username">Nombre de usuario</label>
+                        <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username">
+                    </div>
                     <div class="form-group">
                         <label for="email">Email de usuario</label>
                         <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
@@ -31,9 +28,8 @@
                         <label for="password">Contraseña</label>
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block mb-3">Ingresar</button>
-                    <hr>
-                    <a href="{% url 'PaoApp:register' %}" class="btn btn-secondary btn-block mt-3"> Registrarse</a>
+                    <button type="submit" class="btn btn-primary btn-block mb-3">Registrarse</button>
+
                 </form>
             </div>
     </div>
