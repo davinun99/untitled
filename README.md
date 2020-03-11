@@ -8,7 +8,7 @@ Estamos probando cosas con GIT. Version de prueba
 Para probar los entornos virtuales tenes que instalar pipenv
 
 ```
-pip3 install pipenv
+sudo pip3 install pipenv
 ```
 
 una vez instalado tenes que dirigirte al directorio principal del repo y correr el siguiente comando para crear tu entorno principal
