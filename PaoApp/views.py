@@ -39,12 +39,12 @@ def postRegister(request):
     var_email = request.POST['email']
     password = request.POST['password']
     username = request.POST['username']
-    #try:
-    user = authfb.create_user_with_email_and_password( var_email, password )
-    nuevo_usuario = Usuario( nombre_usuario = username, email = var_email )
-    nuevo_usuario.save()
-    #except:
-        #return render(request, 'PaoApp/register.html', {'error_message' : 'Error al registrar, pruebe con otro email y contrasenha de 6 caracteres'})
+    try:
+        user = authfb.create_user_with_email_and_password( var_email, password )
+        nuevo_usuario = Usuario( nombre_usuario = username, email = var_email )
+        nuevo_usuario.save()
+    except:
+        return render(request, 'PaoApp/register.html', {'error_message' : 'Error al registrar, pruebe con otro email y contraseña de 6 caracteres'})
     return render( request, 'PaoApp/postReg.html', {})
 
 def testLogin( request ):
