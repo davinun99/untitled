@@ -36,27 +36,18 @@ def postRegister(request):
     email = request.POST['email']
     password = request.POST['password']
     username = request.POST['username']
-    user = authfb.create_user_with_email_and_password( email, password )
+    try:
+        user = authfb.create_user_with_email_and_password( email, password )
+    except:
+        return render(request, 'PaoApp/register.html', {})
+
     return render( request, 'PaoApp/postReg.html', {})
-
-def IZItestLogin( request ):
-    email = request.POST['email']
-    password = request.POST['password']
-    user = authfb.sign_in_with_email_and_password(email, password)
-    session_id = user.idToken
-
-    message = 'Credenciales invalidas'
-    context = {
-        'userFirebaseData': user
-    }
-    return render(request, 'PaoApp/testLogin.html', context)
 
 def testLogin( request ):
     email = request.POST['email']
     password = request.POST['password']
     try:
         user = authfb.sign_in_with_email_and_password(email, password)
-
     except:
         message = 'Credenciales invalidas'
         return render( request, 'PaoApp/login.html',{ 'error_message' : message } )
