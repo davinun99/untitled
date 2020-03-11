@@ -60,7 +60,6 @@ def testLogin( request ):
     except:
         message = 'Credenciales invalidas'
         return render( request, 'PaoApp/login.html',{ 'error_message' : message } )
-    print(user)
     context = {
         'userFirebaseData': user
     }
