@@ -1,11 +1,9 @@
 # untitled
 
 Projecto de IS2 - Con Django
-Estamos probando cosas con GIT. Version de prueba
-
 ---
 
-Para probar los entornos virtuales tenes que instalar pipenv
+Para tener los entornos virtuales tenes que instalar pipenv
 
 ```
 sudo pip3 install pipenv
