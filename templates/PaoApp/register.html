@@ -16,6 +16,13 @@
             <div class="row justify-content-center mt-3">
                 <form class="col-sm-12 col-md-8 col-lg-6 pt-3 needs-validation" novalidate method="post" action="{% url 'PaoApp:postRegister' %}" onsubmit="e=>checkPass(e)">
                     {% csrf_token %}
+                    {%  if error_message %}
+                        <div class="form-group">
+                            <div class=" alert alert-danger">
+                                {{ error_message }}
+                            </div>
+                        </div>
+                    {%  endif %}
                     <div class="form-group">
                         <label for="username">Nombre de usuario</label>
                         <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username">

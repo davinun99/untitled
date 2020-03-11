@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 import pyrebase
 from django.contrib import auth
+from .models import Usuario
 from django.views.generic.base import TemplateView
 config = {
     'apiKey': "AIzaSyAbCiMgh8az4COYBvq038jbrvVGA16oCeo",
@@ -30,17 +31,19 @@ def index(request):
 
 def login( request ):
     return render( request, 'PaoApp/login.html', { })
+
 def register( request ):
     return render( request, 'PaoApp/register.html', { })
+
 def postRegister(request):
     email = request.POST['email']
     password = request.POST['password']
     username = request.POST['username']
     try:
         user = authfb.create_user_with_email_and_password( email, password )
+        nuevo_usuario = Usuario( nombre_usuario = '', email = '' )
     except:
-        return render(request, 'PaoApp/register.html', {})
-
+        return render(request, 'PaoApp/register.html', {'error_message' : 'Error al registrar, pruebe con otro email y contrasenha de 6 caracteres})
     return render( request, 'PaoApp/postReg.html', {})
 
 def testLogin( request ):
@@ -54,6 +57,7 @@ def testLogin( request ):
     context = {
         'userFirebaseData': user
     }
+    print( user)
     session_id = user['idToken']
     request.session['uid'] = str( session_id )
     return render( request, 'PaoApp/testLogin.html', context)
