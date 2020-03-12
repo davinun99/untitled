@@ -58,7 +58,6 @@ def testLogin( request ):
     context = {
         'userFirebaseData': user
     }
-    print( user)
     session_id = user['idToken']
     request.session['uid'] = str( session_id )
     return render( request, 'PaoApp/testLogin.html', context)
