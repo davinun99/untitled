@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 import pyrebase
@@ -20,12 +21,9 @@ authfb = firebase.auth()
 
 # Create your views here.
 
-
+@login_required
 def index(request):
-    if request.session.get('uid', False):
-        return render(request, 'PaoApp/login.html', {})
-    else:
-        return render(request, 'PaoApp/testLogin.html', {})
+    return render(request, 'PaoApp/testLogin.html', {})
 
 
 
