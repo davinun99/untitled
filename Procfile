@@ -1,1 +1,1 @@
-web: pip3 install guinicorn && gunicorn untitled.wsgi
+web: pip3 install gunicorn && gunicorn untitled.wsgi
