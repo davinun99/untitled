@@ -45,6 +45,7 @@ def postRegister(request):
         return render(request, 'PaoApp/register.html', {'error_message' : 'Error al registrar, pruebe con otro email y contraseña de 6 caracteres'})
     return render( request, 'PaoApp/postReg.html', {})
 
+@login_required
 def testLogin( request ):
     email = request.POST['email']
     password = request.POST['password']
