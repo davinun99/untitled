@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'PaoApp.apps.PaoappConfig',
 
 ]
-
+print(os.environ['DESARROLLO'])
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -126,4 +126,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/login'
-
