@@ -1,1 +1,1 @@
-web: pip3 install gunicorn && gunicorn untitled.wsgi
+web: export DESARROLLO=true && pip3 install gunicorn && gunicorn untitled.wsgi
